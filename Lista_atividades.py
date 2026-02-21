@@ -1,6 +1,6 @@
 import datetime
 
-tarefas = []                                                            # teste 2.5 
+tarefas = []                                                     #teste 3.0
 
 def mostrar_menu():
     print("\n=== ORGANIZADOR DE TAREFAS ===")
@@ -11,8 +11,9 @@ def mostrar_menu():
 
 def adicionar_tarefa():
     nome = input("Nome da tarefa (ex: Estudo, Sono): ")
+    data = input("Data (opcional, formato DD/MM/AAAA): ")
     horario = input("Horário (opcional, ex: 20:00): ")
-    tarefas.append({"nome": nome, "horario": horario})
+    tarefas.append({"nome": nome, "data": data, "horario": horario})
     print(f"Tarefa '{nome}' adicionada com sucesso!")
 
 def ver_tarefas():
@@ -21,8 +22,9 @@ def ver_tarefas():
         return
     print("\nSuas tarefas:")
     for i, tarefa in enumerate(tarefas):
+        data = f" em {tarefa['data']}" if tarefa['data'] else ""
         horario = f" às {tarefa['horario']}" if tarefa['horario'] else ""
-        print(f"{i+1}. {tarefa['nome']}{horario}")
+        print(f"{i+1}. {tarefa['nome']}{data}{horario}")
 
 def remover_tarefa():
     ver_tarefas()
